@@ -113,7 +113,7 @@ The `hyanova.analyze(df)` will return a `DataFrame` with hyperparameters' name, 
 
  ```python
 importance = hyanova.analyze(df)
->>> 100%|██████████████████████████████████| 3/3 [00:00<00:00, 11.32it/s]
+>>> 100%|██████████████████████████████████| 3/3 [00:00<00:00, 11.32 it/s]
 print(importance)
 >>>              u       v_u  F_u(v_u/v_all)
 0           (alpha,)  0.056885        0.892057

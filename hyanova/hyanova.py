@@ -53,7 +53,10 @@ def get_f_u(a_u, sum_f_w, u):
 
 
 def analyze(cal_df):
-    # cal_df.columns = [params,metric]
+    """
+        Use `hyanova.analyze(df)` to do the functional ANOVA decomposition. 
+        It needs a <pnadas.DataFrame> object, and will return a result in <pnadas.DataFrame> type
+    """
     axis = ['id']
     axis.extend(list(cal_df.columns))
     params = axis[1:-1]
@@ -82,11 +85,21 @@ def analyze(cal_df):
 
 
 def read_csv(path, metric):
+    """
+    You can use `read_csv(path, metric)` to load data from a csv file. It works same as read_df(), and will return two objects.
+        1. a `DataFrame` with all hyperparameters' value and the value of metric you choose
+        2. a `list` of all hyperparameters' name
+    """
     df = pd.read_csv(path).iloc[:, 1:]
     return read_df(df, metric)
 
 
 def read_df(df, metric):
+    """
+    You can use `read_df(df,metric)` to load data from a `<class 'pandas.core.frame.DataFrame'>` object. It will return two objects.
+        1. a `DataFrame` with all hyperparameters' value and the value of metric you choose
+        2. a `list` of all hyperparameters' name
+    """
     params = list(eval(df.loc[0, 'params']).keys())
     result = pd.DataFrame(df.loc[:,metric].copy())
     tmp_df = df.loc[:,'params'].copy()
@@ -99,7 +112,7 @@ def read_df(df, metric):
     return result, params
 
 
-def main():
+def test():
     metric = 'mean_test_score'
     path = './iris[GridSearchCV]Model1.csv'
     df, params = read_csv(path, metric)
@@ -107,4 +120,4 @@ def main():
     importance.to_csv('importance.csv')
 
 if __name__ == "__main__":
-    main()
+    test()
