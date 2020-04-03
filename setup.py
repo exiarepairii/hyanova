@@ -6,7 +6,7 @@ with open("README.rst", "r",encoding='utf8') as fh:
 
 setup(
     name = 'hyanova',
-    version = '1.1.1',
+    version = '1.1.2',
     keywords = ('anova', 'sklearn','hyperparameter','hyperparameter importance'),
     description = 'A pure python implementation of fuctional ANOVA algorithm.',
     license = 'MIT',

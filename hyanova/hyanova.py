@@ -52,7 +52,7 @@ def get_f_u(a_u, sum_f_w, u):
     return a_u
 
 
-def analyze(cal_df):
+def analyze(cal_df,max_iter=-1):
     """
         Use `hyanova.analyze(df)` to do the functional ANOVA decomposition. 
         It needs a <pnadas.DataFrame> object, and will return a result in <pnadas.DataFrame> type
@@ -67,7 +67,11 @@ def analyze(cal_df):
     f.loc[0,'id'] = hash(str([]))
     v_all = np.std(cal_df[metric].to_numpy())**2
     v = pd.DataFrame(columns=['u', 'v_u', 'F_u(v_u/v_all)'])
-    with tqdm(total=2**len(params) - 1) as pbar:
+    if max_iter < 0:
+        tqdm_len = 2**len(params) - 1
+    else:
+        tqdm_len = max_iter
+    with tqdm(total=tqdm_len) as pbar:
         for k in range(1, len(params) + 1):
             for u in combinations(params, k):
                 # calculate a_u
@@ -80,7 +84,8 @@ def analyze(cal_df):
                 v = v.append({'u': u, 'v_u': (tmp_f_u**2).mean(), 'F_u(v_u/v_all)': (
                     tmp_f_u**2).mean() / v_all}, ignore_index=True)
                 pbar.update(1)
-
+                if pbar.n == tqdm_len:
+                    return v
     return v
 
 
