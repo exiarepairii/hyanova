@@ -108,7 +108,7 @@ def read_df(df, metric):
 
     col_name = params[:]
     col_name.append(metric)
-    result = result.reindex(columns=col_name)
+    result = result.reindex(columns=col_name).copy()
     return result, params
 
 
