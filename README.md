@@ -25,8 +25,8 @@ importance = hyanova.analyze(df)
 The `metric` is the feature you choose to evaluate the model performance, it must appears in the `.csv` file or the `pandas.DataFrame` object's column. And the result you got will be similar to this below, see the next section(ANOVA) for more details.
 
 ```python
-print(importance)
->>>              u       v_u  F_u(v_u/v_all)
+>>> print(importance)
+              u       v_u  F_u(v_u/v_all)
 0           (alpha,)  0.056885        0.892057
 1        (l1_ratio,)  0.002489        0.039030
 2  (alpha, l1_ratio)  0.004394        0.068912
@@ -75,11 +75,11 @@ Use `hyanova.read_csv(path,metric)` to load data from `.csv` file. It is equival
 The [template file](https://github.com/exiarepairii/hyanova/tree/master/example/iris[GridSearchCV]Model1.csv)  can be find at the example folder. Here is an example.
 
 ```python
-print(df.head)
+>>> print(df.head)
 ```
 
 ```shell
->>> mean_fit_time  std_fit_time  mean_score_time  std_score_time  param_alpha  \
+	mean_fit_time  std_fit_time  mean_score_time  std_score_time  param_alpha  \
 0       0.003899      0.000194         0.048513        0.007621     0.000977   
 1       0.003401      0.000584         0.042454        0.011295     0.000977   
 2       0.002706      0.000502         0.048544        0.009059     0.000977   
@@ -109,16 +109,16 @@ print(df.head)
 ```
 
 ```python
-df,params = hyanova.read_df(df,'mean_test_score')
-print(df.head)
->>>  alpha  l1_ratio  mean_test_score
+>>> df,params = hyanova.read_df(df,'mean_test_score')
+>>> print(df.head)
+    alpha  l1_ratio  mean_test_score
 0  0.000977      0.00         0.923810
 1  0.000977      0.25         0.933333
 2  0.000977      0.50         0.942857
 3  0.000977      0.75         0.904762
 4  0.000977      1.00         0.942857
-print(params)
->>> ['alpha', 'l1_ratio']
+>>> print(params)
+['alpha', 'l1_ratio']
 ```
 
 ### ANOVA
@@ -153,10 +153,10 @@ The `df` parameter needs a `pnadas.DataFrame` object which has a format similar 
 The `hyanova.analyze(df)` will return a `DataFrame` with hyperparameters' name, variance(v_u) and the importance(F_u).
 
  ```python
-importance = hyanova.analyze(df)
->>> 100%|██████████████████████████████████| 3/3 [00:00<00:00, 11.32 it/s]
-print(importance)
->>>              u       v_u  F_u(v_u/v_all)
+>>> importance = hyanova.analyze(df)
+100%|██████████████████████████████████| 3/3 [00:00<00:00, 11.32 it/s]
+>>> print(importance)
+              u       v_u  F_u(v_u/v_all)
 0           (alpha,)  0.056885        0.892057
 1        (l1_ratio,)  0.002489        0.039030
 2  (alpha, l1_ratio)  0.004394        0.068912
@@ -167,10 +167,10 @@ print(importance)
 Due to the performance limitations of Python, the functional ANOVA will be very slow when the number of hyperparameters is high (more than 5). You can end the analysis early by setting the `max_iter` parameter. In fact, we usually only need the univariate importance, so set the `max_iter` parameter to equal the number of features for shorter runtime.
 
  ```python
-importance = hyanova.analyze(df,max_iter=2)
->>> 100%|██████████████████████████████████| 2/2 [00:00<00:00, 8.12 it/s]
-print(importance)
->>>              u       v_u  F_u(v_u/v_all)
+>>> importance = hyanova.analyze(df,max_iter=2)
+100%|██████████████████████████████████| 2/2 [00:00<00:00, 8.12 it/s]
+>>> print(importance)
+              u       v_u  F_u(v_u/v_all)
 0           (alpha,)  0.056885        0.892057
 1        (l1_ratio,)  0.002489        0.039030
  ```
