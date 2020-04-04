@@ -46,13 +46,13 @@ You can use `read_df(df,metric)` to load data from a `<class 'pandas.core.frame.
 
 >**Parameters:**
 >
->- **df: **<class 'pandas.core.frame.DataFrame'>, the `DataFrame` you want to analyze.
+>- **df:** <class 'pandas.core.frame.DataFrame'>, the `DataFrame` you want to analyze.
 >
->- **metric: **string, the metric you choose.
+>- **metric:** string, the metric you choose.
 >
 >**Returns:**
 >
->- **result_df: **<class 'pandas.core.frame.DataFrame'>,a `DataFrame` with all hyperparameters' value and the value of metric you choose
+>- **result_df:** <class 'pandas.core.frame.DataFrame'>,a `DataFrame` with all hyperparameters' value and the value of metric you choose
 >- **params_list:** list, a `list` of all hyperparameters' name.
 
 #### read_csv(path,metric)
@@ -61,13 +61,13 @@ Use `hyanova.read_csv(path,metric)` to load data from `.csv` file. It is equival
 
 >**Parameters:**
 >
->- **path: **string, path of the `DataFrame` you want to analyze.
+>- **path:** string, path of the `DataFrame` you want to analyze.
 >
->- **metric: **string, the metric you choose.
+>- **metric:** string, the metric you choose.
 >
 >**Returns:**
 >
->- **result_df: **<class 'pandas.core.frame.DataFrame'>,a `DataFrame` with all hyperparameters' value and the value of metric you choose
+>- **result_df:** <class 'pandas.core.frame.DataFrame'>,a `DataFrame` with all hyperparameters' value and the value of metric you choose
 >- **params_list:** list, a `list` of all hyperparameters' name.
 
 #### Example
@@ -129,13 +129,13 @@ Use `hyanova.analyze(df,max_iter=-1)` to do the functional ANOVA decomposition.
 
 >**Parameters:**
 >
->- **df: **<class 'pandas.core.frame.DataFrame'>, the `DataFrame` you want to analyze. 
+>- **df:** <class 'pandas.core.frame.DataFrame'>, the `DataFrame` you want to analyze. 
 >
->- **max_iter: **int, default to -1.
+>- **max_iter:** int, default to -1.
 >
 >**Returns:**
 >
->- **result_df: **<class 'pandas.core.frame.DataFrame'>
+>- **result_df:** <class 'pandas.core.frame.DataFrame'>
 
 The `df` parameter needs a `pnadas.DataFrame` object which has a format similar to the following table. You can use the methods HyANOVA provides to load data easily.
 
